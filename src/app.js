@@ -1,15 +1,29 @@
-
-import express from 'express'
 import cors from 'cors'
 import { urlencoded, json } from 'body-parser'
 import dotenv from 'dotenv'
 import redisClient from './redis-client'
 
 dotenv.load()
-const app = express()
+var app = require('express')();
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
+
 app.use(urlencoded({ extended: true, limit: '500mb'}))
 app.use(json({ extended: true, limit: '500mb'}))
 app.use(cors())
+
+http.listen(process.env.PORT)
+
+app.get('/', (_, res) => {
+	res.send('Diego Cao: Hello')
+  })
+
+  io.on('connection', (socket) => {
+	console.log('a user connected')
+	socket.on('disconnect', () => {
+		console.log('user disconnected')
+	  })
+  })
 
 redisClient.rsmq.createQueue({qname:"myqueue"}, function (_err, resp) {
   if (resp===1) {
@@ -39,10 +53,3 @@ redisClient.rsmq.receiveMessage({qname:"myqueue"}, function (_err, resp) {
 		console.log("No messages for me...")
 	}
 })
-
-app.get('/', (_, res) => {
-  res.send('Diego Cao: Hello')
-})
-
-let server = app.listen(process.env.PORT || 8080)
-server.setTimeout(500000)

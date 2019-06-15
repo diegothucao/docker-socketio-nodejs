@@ -9,3 +9,4 @@ references
  1. https://docs.docker.com/install/	
  2. https://medium.com/@weyoss/building-a-simple-message-queue-using-redis-server-and-node-js-964eda240a2a
  3. https://github.com/smrchy/rsmq
+ 4. https://socket.io/docs/server-api/
