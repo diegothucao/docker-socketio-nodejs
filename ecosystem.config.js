@@ -6,7 +6,8 @@ module.exports = {
     instances: "max",
     env: {
       name : 'diego-rsmq',
-      NODE_ENV: 'development'
+      NODE_ENV: 'development',
+      REDIS_PASSS: 'diegocao'
     }
   }]
 }
