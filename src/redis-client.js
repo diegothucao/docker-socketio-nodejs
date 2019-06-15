@@ -1,5 +1,6 @@
 import { createClient } from 'redis'
 import { promisify } from 'util'
+import RedisSMQ from "rsmq"
 
 const client = createClient(process.env.REDIS_URL)
 const rsmq = new RedisSMQ( {client: client,  realtime: true, ns: "rsmq", password: process.env.REDIS_PASSS} );
