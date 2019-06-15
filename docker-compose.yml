@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  proxy:
+    restart: always
+    container_name: diego-rsmq-nginx
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "80:80"
+    links:
+      - diego-rsmq
+  diego-rsmq-redis:
+    restart: always
+    image: redis
+    container_name: diego-rsmq-redis
+    expose:
+      - 6379
+  
+  diego-rsmq:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: diego-rsmq
+    restart: always
+    ports:
+      - "8080:8080"
+    links:
+      - diego-rsmq-redis
+    volumes:
+      - .:/diego-rsmq
+    tty: true
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://diego-rsmq-redis
