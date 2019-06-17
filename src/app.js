@@ -14,7 +14,7 @@ app.use(cors())
 http.listen(process.env.PORT)
 
 app.get('/', (_, res) => {
-	res.send('Diego Cao: Hello')
+	res.send('Diego Cao: Socket IO')
 })
 
 io.on('connection', (socket) => {
