@@ -1,7 +1,7 @@
 {
-  "name": "rsmq",
+  "name": "Server",
   "version": "1.0.0",
-  "description": "Server rsmq",
+  "description": "Server",
   "main": "src/app.js",
   "author": "Diego CAO <cao.trung.thu@gmail.com>",
   "scripts": {
