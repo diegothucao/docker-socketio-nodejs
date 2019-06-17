@@ -3,9 +3,8 @@ module.exports = {
     name      : 'diego-service',
     script    : 'dist/app.js',
     env: {
-      name : 'diego-rsmq',
-      NODE_ENV: 'development',
-      REDIS_PASSS: 'diegocao'
+      name : 'diego-socketio',
+      NODE_ENV: 'development'
     }
   }]
 }
