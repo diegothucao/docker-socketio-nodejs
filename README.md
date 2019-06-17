@@ -1,5 +1,5 @@
 # Composer, express and Socket IO
-This is an essential example to build docker with Composer, express Socket IO
+This is an essential example to build docker with Composer, express and Socket IO
 
 ``` javascript
 import cors from 'cors'
